@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact List</title>
+    <style>
+        body{
+            background-color: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            background-color: #ffffff;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn-container a {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Profession</th>
+                <th>Telephone Number</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in context %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.profession }}</td>
+                <td>{{ contact.telephone }}</td>
+                <td>{{ contact.email }}</td>
+                <td class="btn-container">
+                    <a href="update/{{ contact.id }}" id="{{ contact.id }}">
+                        <button type="button" class="btn btn-success active">
+                            Edit
+                        </button>
+                    </a>
+                    <a href="delete/{{ contact.id }}" id="{{ contact.id }}">
+                        <button type="button" class="btn btn-success active">
+                            Delete
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <a href="create" id="create">
+            <button type="button" class="btn btn-success active btn-block" style="margin-top: 10px">
+                Create a New Contact
+            </button>
+        </a>
+    </div>
+
+</body>
+</html>
